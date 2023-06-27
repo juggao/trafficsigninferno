@@ -4,20 +4,21 @@
 //
 import processing.core.PImage;
 
+String imgdir="/run/media/reinold/SEAGATEHUB/Content/Verkeersborden/informatiebord";
+
 String[] filenames;
 PImage[] images;
 
-int maximages = 50;
+int maximages = 100;
 int s_size = 1000;
 int x = 0;
-int scalefactor=7;
+int scalefactor=3;
 
 void setup() {
   size(1000,1000);
   background(127);
 
-  //File folder = dataFile("/run/media/reinold/SEAGATEHUB/Content/Verkeersborden/informatiebord");
-  File folder = dataFile("/home/reinold/Pictures/Cactussen");
+  File folder = dataFile(imgdir);
   File[] pics = folder.listFiles();  
   filenames = new String[pics.length];
   
