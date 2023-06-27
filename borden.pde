@@ -7,7 +7,7 @@ import processing.core.PImage;
 String[] filenames;
 PImage[] images;
 
-int maximages = 150;
+int maximages = 50;
 int s_size = 1000;
 int x = 0;
 
@@ -15,7 +15,8 @@ void setup() {
   size(1000,1000);
   background(127);
 
-  File folder = dataFile("/run/media/reinold/SEAGATEHUB/Content/Verkeersborden/informatiebord");
+  //File folder = dataFile("/run/media/reinold/SEAGATEHUB/Content/Verkeersborden/informatiebord");
+  File folder = dataFile("/home/reinold/Pictures");
   File[] pics = folder.listFiles();  
   filenames = new String[pics.length];
   
@@ -37,7 +38,8 @@ void draw(){
   }
   pushMatrix();
   translate(random(s_size), random(s_size));
-  image(images[x],0,0,images[x].width/3, images[x].height/3);
+  //image(images[x],0,0,images[x].width/3, images[x].height/3);
+  image(images[x],0,0,images[x].width, images[x].height);
   popMatrix();
   x = x+1;
 }
