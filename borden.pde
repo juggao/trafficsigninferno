@@ -11,7 +11,8 @@ String[] filenames;
 PImage[] images;
 
 int maximages = 0;
-int s_size = 1000;
+int s_width = displayWidth;
+int s_height = displayHeight;
 int x = 0;
 int scalefactor=0;
 GTextField txf0, txf1;
@@ -24,7 +25,9 @@ boolean startdemo=false;
 int currentimg=0;
 
 void settings() {
-    size(s_size,s_size);    
+    size(displayWidth,displayHeight);
+    s_width = displayWidth;
+    s_height = displayHeight;
 }
 
 // Create numeric text field controls for integer and decimal numbers
@@ -74,7 +77,7 @@ void handleButtonEvents(GButton button, GEvent event) {
 }
 
 void setup() {
-  
+  //fullScreen();  
   background(51);
   G4P.messagesEnabled(false);
   G4P.setDisplayFont("Arial", G4P.PLAIN, 14); 
@@ -102,10 +105,16 @@ void loadFileNames() {
   images = new PImage[maximages+1];
 }
 
-void loadImage(int n) {  
+int loadImage(int n) {  
   println("loading :", filenames[n]);
   loading = true;
-  images[n] = loadImage(filenames[n]);
+  PImage i;
+  i = loadImage(filenames[n]);
+  images[n] = i;
+  if (i != null) {     
+    return -1;
+  }
+  return 0;  
 }
 
   
@@ -147,8 +156,9 @@ void draw(){
       x = 0;
     }
     pushMatrix();
-    translate(random(s_size), random(s_size));
-    image(images[x],0,0,images[x].width/scalefactor, images[x].height/scalefactor);
+    translate(random(s_width), random(s_height));
+    if (images[x] != null)
+      image(images[x],0,0,images[x].width/scalefactor, images[x].height/scalefactor);
     popMatrix();
     x = x+1;
   }
