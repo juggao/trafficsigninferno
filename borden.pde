@@ -10,11 +10,11 @@ String imgdir="";
 String[] filenames;
 PImage[] images;
 
-int maximages = 0;
+int maximages = 50;
 int s_width = displayWidth;
 int s_height = displayHeight;
 int x = 0;
-int scalefactor=0;
+int scalefactor=2;
 GTextField txf0, txf1;
 GLabel label1, label2;
 GButton btn;
@@ -38,14 +38,19 @@ void createNumericTextFieldControls() {
   label1.setTextAlign(GAlign.CENTER, GAlign.CENTER);
   label1.setOpaque(true);
   txf0 = new GTextField(this, 20, 80, 120, 20);
-  txf0.setNumeric(1, 500, 0);
-
+  txf0.setNumericType(G4P.INTEGER);
+  txf0.setNumeric(1, 500, 50);
+  txf0.setText("50");
+ 
+  
   label2 = new GLabel(this, 160, 40, 120, 38);
   label2.setText("Scale factor");
   label2.setTextAlign(GAlign.CENTER, GAlign.CENTER);
   label2.setOpaque(true);
   txf1 = new GTextField(this, 160, 80, 120, 20);
-  txf1.setNumeric(1, 20, 0);
+  txf1.setNumericType(G4P.INTEGER);
+  txf1.setNumeric(1, 20, 2);
+  txf1.setText("2");
  
 }
 
